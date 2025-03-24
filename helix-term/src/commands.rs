@@ -598,6 +598,8 @@ impl MappableCommand {
         evil_find_next_char, "Move to next occurrence of char (evil)",
         evil_till_prev_char, "Move till previous occurrence of char (evil)",
         evil_find_prev_char, "Move to previous occurrence of char (evil)",
+        evil_write_quit_all, "Save all changes and quit the editor (evil)",
+        evil_force_quit_all, "Force-quit the editor, discarding any changes (evil)",
         command_palette, "Open command palette",
         goto_word, "Jump to a two-character label",
         extend_to_word, "Extend to a two-character label",
@@ -6650,4 +6652,12 @@ fn evil_till_prev_char(cx: &mut Context) {
 
 fn evil_find_prev_char(cx: &mut Context) {
     EvilCommands::find_char(cx, find_char, Direction::Backward, true)
+}
+
+fn evil_write_quit_all(cx: &mut Context) {
+    EvilCommands::write_quit_all(cx);
+}
+
+fn evil_force_quit_all(cx: &mut Context) {
+    EvilCommands::force_quit_all(cx);
 }

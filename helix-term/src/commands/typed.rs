@@ -744,6 +744,10 @@ pub fn write_all_impl(
     Ok(())
 }
 
+pub fn evil_write_all(cx: &mut compositor::Context, force: bool) -> anyhow::Result<()> {
+    write_all_impl(cx, force, false)
+}
+
 fn write_all(
     cx: &mut compositor::Context,
     _args: &[Cow<str>],
@@ -805,6 +809,10 @@ fn quit_all_impl(cx: &mut compositor::Context, force: bool) -> anyhow::Result<()
     }
 
     Ok(())
+}
+
+pub fn evil_quit_all(cx: &mut compositor::Context, force: bool) -> anyhow::Result<()> {
+    quit_all_impl(cx, force)
 }
 
 fn quit_all(

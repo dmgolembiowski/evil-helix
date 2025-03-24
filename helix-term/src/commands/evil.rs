@@ -13,7 +13,7 @@ use once_cell::sync::Lazy;
 
 use crate::commands::{enter_insert_mode, exit_select_mode, Context, Extend, Operation};
 
-use super::{select_mode, OnKeyCallbackKind};
+use super::{select_mode, typed, OnKeyCallbackKind};
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 enum Command {
@@ -709,4 +709,10 @@ impl EvilCommands {
             log::warn!("The find_char base function did not set a key callback");
         }
     }
+
+    pub fn write_quit_all(cx: &mut Context) {
+        typed::evil_write_all(cx, false);
+    }
+
+    pub fn force_quit_all(cx: &mut Context) {}
 }

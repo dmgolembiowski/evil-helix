@@ -5,6 +5,7 @@ use super::{KeyTrie, Mode};
 use helix_core::hashmap;
 
 pub fn default() -> HashMap<Mode, KeyTrie> {
+    write_all_quit();
     let normal = keymap!({ "Normal mode"
         "h" | "left" => move_char_left,
         "j" | "down" => move_visual_line_down,
@@ -704,7 +705,9 @@ pub fn default_evil() -> HashMap<Mode, KeyTrie> {
             "n" => search_next,
             "N" => search_prev,
         },
-        "Z" => { "View" sticky=true
+        "Z" => { "View/Exit" sticky=true
+            "Z" => evil_write_quit_all,
+            "Q" => evil_force_quit_all,
             "z" | "c" => align_view_center,
             "t" => align_view_top,
             "b" => align_view_bottom,
